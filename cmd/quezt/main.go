@@ -501,14 +501,14 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				selected := availableModels[m.modelPickerCursor]
 				switch selected.Provider {
 				case "claude":
-					key := envOr("ANTHROPIC_API_KEY", envOr("YQMEV_AI_KEY", ""))
+					key := envOr("ANTHROPIC_API_KEY", envOr("QUEZT_AI_KEY", ""))
 					if key != "" {
 						m.aiProvider = ai.NewClaude(key, selected.Model)
 					} else {
 						m.err = fmt.Errorf("ANTHROPIC_API_KEY not set")
 					}
 				case "openai":
-					key := envOr("OPENAI_API_KEY", envOr("YQMEV_AI_KEY", ""))
+					key := envOr("OPENAI_API_KEY", envOr("QUEZT_AI_KEY", ""))
 					if key != "" {
 						m.aiProvider = ai.NewOpenAI(key, selected.Model, "")
 					} else {
@@ -1466,7 +1466,7 @@ func (m model) viewHeader() string {
 	}
 
 	// Left: logo + connection
-	left := lipgloss.NewStyle().Bold(true).Foreground(colorPrimary).Render("YQMEV") +
+	left := lipgloss.NewStyle().Bold(true).Foreground(colorPrimary).Render("QUEZT") +
 		lbl.Render(" · ") + connIcon + " " + connLabel
 
 	if m.wsEvents > 0 {
@@ -2986,10 +2986,10 @@ func renderQMascotMEV(frame int) string {
 // ---------------------------------------------------------------------------
 
 func main() {
-	gwURL := flag.String("gw", envOr("YQMEV_GATEWAY", "ws://localhost:9099/ws"), "Gateway WebSocket URL")
-	apiKey := flag.String("key", envOr("YQMEV_API_KEY", ""), "API key")
-	aiProviderFlag := flag.String("ai", envOr("YQMEV_AI_PROVIDER", "claude"), "AI provider: claude, openai, ollama")
-	aiModelFlag := flag.String("ai-model", envOr("YQMEV_AI_MODEL", ""), "AI model override")
+	gwURL := flag.String("gw", envOr("QUEZT_GATEWAY", "ws://localhost:9099/ws"), "Gateway WebSocket URL")
+	apiKey := flag.String("key", envOr("QUEZT_API_KEY", ""), "API key")
+	aiProviderFlag := flag.String("ai", envOr("QUEZT_AI_PROVIDER", "claude"), "AI provider: claude, openai, ollama")
+	aiModelFlag := flag.String("ai-model", envOr("QUEZT_AI_MODEL", ""), "AI model override")
 	flag.Parse()
 
 	cfg := client.Config{
@@ -3002,12 +3002,12 @@ func main() {
 	// Initialize AI provider
 	switch *aiProviderFlag {
 	case "claude":
-		key := envOr("ANTHROPIC_API_KEY", envOr("YQMEV_AI_KEY", ""))
+		key := envOr("ANTHROPIC_API_KEY", envOr("QUEZT_AI_KEY", ""))
 		if key != "" {
 			m.aiProvider = ai.NewClaude(key, *aiModelFlag)
 		}
 	case "openai":
-		key := envOr("OPENAI_API_KEY", envOr("YQMEV_AI_KEY", ""))
+		key := envOr("OPENAI_API_KEY", envOr("QUEZT_AI_KEY", ""))
 		if key != "" {
 			m.aiProvider = ai.NewOpenAI(key, *aiModelFlag, "")
 		}
