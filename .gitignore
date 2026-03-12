@@ -1,0 +1,8 @@
+bin/
+dist/
+*.out
+npm/bin/quezt.exe
+npm/bin/quezt
+!npm/bin/quezt
+npm/tmp_*
+.env

@@ -1,0 +1,36 @@
+{
+  "name": "quezt",
+  "version": "0.1.0",
+  "description": "MEV terminal dashboard — monitor, analyze, and interact with YoorQuezt MEV infrastructure",
+  "keywords": [
+    "mev",
+    "ethereum",
+    "defi",
+    "terminal",
+    "tui",
+    "dashboard",
+    "yoorquezt",
+    "bundle",
+    "arbitrage",
+    "flashbots"
+  ],
+  "homepage": "https://quezt.dev",
+  "bugs": {
+    "url": "https://github.com/yoorquezt-labs/quezt/issues"
+  },
+  "license": "MIT",
+  "author": "YoorQuezt Labs <eng@yoorquezt.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yoorquezt-labs/quezt.git"
+  },
+  "bin": {
+    "quezt": "./bin/quezt"
+  },
+  "scripts": {
+    "postinstall": "node install.js"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

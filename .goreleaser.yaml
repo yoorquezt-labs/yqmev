@@ -1,0 +1,63 @@
+version: 2
+project_name: quezt
+
+builds:
+  - id: quezt
+    main: ./cmd/quezt
+    binary: quezt
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+      - -X main.version={{.Version}}
+      - -X main.commit={{.ShortCommit}}
+      - -X main.date={{.Date}}
+
+archives:
+  - id: quezt
+    builds:
+      - quezt
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+    format_overrides:
+      - goos: windows
+        format: zip
+
+checksum:
+  name_template: "checksums.txt"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^ci:"
+
+brews:
+  - name: quezt
+    repository:
+      owner: yoorquezt-labs
+      name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
+    directory: Formula
+    homepage: "https://quezt.dev"
+    description: "MEV terminal dashboard — monitor, analyze, and interact with YoorQuezt MEV infrastructure"
+    license: "MIT"
+    install: |
+      bin.install "quezt"
+    test: |
+      system "#{bin}/quezt", "--version"
+
+release:
+  github:
+    owner: yoorquezt-labs
+    name: quezt
+  prerelease: auto
+  name_template: "v{{.Version}}"
