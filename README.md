@@ -1,7 +1,7 @@
 <h1 align="center">quezt</h1>
 
 <p align="center">
-  <em>MEV terminal dashboard by <a href="https://yoorquezt.com">YoorQuezt</a></em>
+  <em>MEV terminal dashboard by <a href="https://yoorquezt.io">YoorQuezt</a></em>
 </p>
 
 <p align="center">
