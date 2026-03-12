@@ -275,7 +275,7 @@ quezt/
 | [yoorquezt-mesh](https://github.com/yoorquezt-labs/yoorquezt-mesh) | P2P relay network (QUIC, gossip, block building) |
 | [yoorquezt-sdk-mev-ts](https://github.com/yoorquezt-labs/yoorquezt-sdk-mev-ts) | TypeScript MEV SDK |
 | [yoorquezt-mev-sdk-python](https://github.com/yoorquezt-labs/yoorquezt-sdk-mev-py) | Python MEV SDK |
-| [q8s](https://github.com/yoorquezt-labs/q8s) | Mesh network TUI dashboard |
+| [q8s](https://github.com/yoorquezt-labs/q8s) | Kubernetes TUI dashboard |
 
 ## License
 
