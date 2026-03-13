@@ -22,12 +22,13 @@ builds:
 
 archives:
   - id: yqmev
-    builds:
-      - yqmev
     name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+    formats:
+      - tar.gz
     format_overrides:
       - goos: windows
-        format: zip
+        formats:
+          - zip
 
 checksum:
   name_template: "checksums.txt"
@@ -47,13 +48,13 @@ brews:
       name: homebrew-tap
       token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
     directory: Formula
-    homepage: "https://yqmev.dev"
+    homepage: "https://github.com/yoorquezt-labs/yqmev"
     description: "MEV terminal dashboard — monitor, analyze, and interact with YoorQuezt MEV infrastructure"
     license: "MIT"
     install: |
       bin.install "yqmev"
     test: |
-      system "#{bin}/yqmev", "--version"
+      system "#{bin}/yqmev", "--help"
 
 release:
   github:
